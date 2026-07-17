@@ -1,10 +1,10 @@
 extends CharacterBody3D
 class_name Player
 
-@export var speed = 5.0
-@export var acceleration = 4.0
-@export var jump_speed = 8.0
-@export var mouse_sensitivity = 0.0015
+@export var speed = 6.5
+@export var acceleration = 2.0
+
+@export var mouse_sensitivity = 0.003
 @export var rotation_speed = 12.0
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -14,6 +14,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = $AnimationTree.get("parameters/playback")
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func _physics_process(delta):
 	velocity.y += -gravity * delta
 	
@@ -21,8 +24,16 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	if velocity.length() > 1.0:
-		model.rotation.y = lerp_angle(model.rotation.y, spring_arm.rotation.y, rotation_speed * delta)
+	var horizontal_velocity = Vector3(velocity.x, 0.0, velocity.z)
+
+	if horizontal_velocity.length() > 0.1:
+		var target_rotation = atan2(-horizontal_velocity.x, -horizontal_velocity.z)
+		
+		model.rotation.y = lerp_angle(
+			model.rotation.y,
+			target_rotation,
+			rotation_speed * delta
+		)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -41,4 +52,4 @@ func get_move_input(delta):
 	velocity.y = vy
 
 	var vl = velocity * model.transform.basis
-	animation_tree.set("parameters/IWR/blend_position", Vector2(vl.x, -vl.z) / speed)
+	animation_tree.set("parameters/Idle-Walk-Run-Cycle/blend_position", Vector2(vl.x, -vl.z) / speed)
