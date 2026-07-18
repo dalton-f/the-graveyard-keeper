@@ -2,13 +2,17 @@ extends CharacterBody3D
 class_name Player
 
 @export_category("Movement")
-@export var speed: float = 6.5
+@export var speed: float = 5.5
 @export var acceleration: float = 5.0
 
 @export_category("Camera")
 @export var mouse_sensitivity: float = 0.003
 @export var camera_min_pitch: float = -90.0
 @export var camera_max_pitch: float = 30.0
+
+@export var min_camera_distance: float = 4.6
+@export var max_camera_distance: float = 7.6
+@export var zoom_step: float = 1.0
 
 @export_category("Rotation")
 @export var rotation_speed: float = 12.0
@@ -40,7 +44,21 @@ func _unhandled_input(event):
 		spring_arm.rotation.x -= event.relative.y * mouse_sensitivity
 		spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
 		spring_arm.rotation.y -= event.relative.x * mouse_sensitivity
+	
+	if event.is_action_pressed("wheel_up"):
+		spring_arm.spring_length = clamp(
+			spring_arm.spring_length - zoom_step,
+			min_camera_distance,
+			max_camera_distance
+		)
 
+	if event.is_action_pressed("wheel_down"):
+		spring_arm.spring_length = clamp(
+			spring_arm.spring_length + zoom_step,
+			min_camera_distance,
+			max_camera_distance
+		)
+	
 func handle_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
