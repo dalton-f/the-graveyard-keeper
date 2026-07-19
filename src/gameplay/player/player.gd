@@ -13,6 +13,7 @@ class_name Player
 @export var min_camera_distance: float = 4.6
 @export var max_camera_distance: float = 7.6
 @export var zoom_step: float = 1.0
+@export var zoom_speed: float = 8.0
 
 @export_category("Rotation")
 @export var rotation_speed: float = 12.0
@@ -23,18 +24,29 @@ var gravity: float = ProjectSettings.get_setting(
 	"physics/3d/default_gravity"
 )
 
+var target_zoom: float
+
 @onready var spring_arm: SpringArm3D = $SpringArm3D
 @onready var model: Node3D = $Rig_Large
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	target_zoom = spring_arm.spring_length
 
 func _physics_process(delta: float) -> void:
 	handle_gravity(delta)
 	handle_movement(delta)
 	handle_rotation(delta)
 	
+	# Smooth camera zoom
+	spring_arm.spring_length = lerp(
+		spring_arm.spring_length,
+		target_zoom,
+		zoom_speed * delta
+	)
 	update_animation(delta)
 
 	move_and_slide()
@@ -46,15 +58,15 @@ func _unhandled_input(event):
 		spring_arm.rotation.y -= event.relative.x * mouse_sensitivity
 	
 	if event.is_action_pressed("wheel_up"):
-		spring_arm.spring_length = clamp(
-			spring_arm.spring_length - zoom_step,
+		target_zoom = clamp(
+			target_zoom - zoom_step,
 			min_camera_distance,
 			max_camera_distance
 		)
 
 	if event.is_action_pressed("wheel_down"):
-		spring_arm.spring_length = clamp(
-			spring_arm.spring_length + zoom_step,
+		target_zoom = clamp(
+			target_zoom + zoom_step,
 			min_camera_distance,
 			max_camera_distance
 		)
@@ -80,6 +92,13 @@ func handle_rotation(delta: float) -> void:
 		
 	model.rotation.y = lerp_angle(
 		model.rotation.y,
+		target_rotation,
+		rotation_speed * delta
+	)
+	
+	# Because the collision shape isn't a capsule or cylinder, we have to rotate it with the model
+	collision_shape_3d.rotation.y = lerp_angle(
+		collision_shape_3d.rotation.y,
 		target_rotation,
 		rotation_speed * delta
 	)
