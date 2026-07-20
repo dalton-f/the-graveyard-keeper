@@ -96,13 +96,6 @@ func handle_rotation(delta: float) -> void:
 		rotation_speed * delta
 	)
 	
-	# Because the collision shape isn't a capsule or cylinder, we have to rotate it with the model
-	collision_shape_3d.rotation.y = lerp_angle(
-		collision_shape_3d.rotation.y,
-		target_rotation,
-		rotation_speed * delta
-	)
-	
 func update_animation(delta: float) -> void:
 	var local_velocity := (velocity * model.transform.basis)
 	
