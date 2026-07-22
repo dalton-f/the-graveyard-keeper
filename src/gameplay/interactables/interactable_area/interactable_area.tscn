@@ -4,7 +4,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ck6d0"]
 height = 0.27979687
-radius = 4.0
+radius = 2.3
 
 [node name="InteractableArea" type="Area3D" unique_id=1155994284]
 script = ExtResource("1_wfpag")

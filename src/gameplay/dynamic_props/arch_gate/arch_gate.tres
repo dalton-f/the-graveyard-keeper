@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GridMapReplacementRule" format=3 uid="uid://y5wf7vgq4vn1"]
+
+[ext_resource type="PackedScene" uid="uid://dhx5cb23o3r5i" path="res://src/gameplay/dynamic_props/arch_gate/arch_gate.tscn" id="1_l702p"]
+[ext_resource type="Script" uid="uid://d038h1g71kaue" path="res://src/levels/gridmap_replacement_rule.gd" id="1_mcynv"]
+
+[resource]
+script = ExtResource("1_mcynv")
+target_name = "ArchGate"
+replacement_scene = ExtResource("1_l702p")
+metadata/_custom_type_script = "uid://d038h1g71kaue"

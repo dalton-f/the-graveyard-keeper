@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="the-graveyard-keeper"
+run/main_scene="uid://cdcgmu66t7ri"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

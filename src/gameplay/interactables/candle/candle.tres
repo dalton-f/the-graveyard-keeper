@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GridMapReplacementRule" format=3 uid="uid://dkwauy7vrfb22"]
+
+[ext_resource type="Script" uid="uid://d038h1g71kaue" path="res://src/levels/gridmap_replacement_rule.gd" id="1_3udqk"]
+[ext_resource type="PackedScene" uid="uid://d0fdltjfajjkv" path="res://src/gameplay/interactables/candle/candle.tscn" id="1_uay2s"]
+
+[resource]
+script = ExtResource("1_3udqk")
+target_name = "Candle"
+replacement_scene = ExtResource("1_uay2s")
+metadata/_custom_type_script = "uid://d038h1g71kaue"
