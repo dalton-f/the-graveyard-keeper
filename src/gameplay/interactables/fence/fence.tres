@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GridMapReplacementRule" format=3 uid="uid://dc6so7vic565y"]
+
+[ext_resource type="Script" uid="uid://d038h1g71kaue" path="res://src/levels/gridmap_replacement_rule.gd" id="1_1karx"]
+[ext_resource type="PackedScene" uid="uid://ew7cbamc7orx" path="res://src/gameplay/interactables/fence/fence.tscn" id="1_vt813"]
+
+[resource]
+script = ExtResource("1_1karx")
+target_name = "Fence"
+replacement_scene = ExtResource("1_vt813")
+metadata/_custom_type_script = "uid://d038h1g71kaue"

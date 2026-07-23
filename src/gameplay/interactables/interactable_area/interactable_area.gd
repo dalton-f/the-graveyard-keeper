@@ -1,11 +1,15 @@
 extends Area3D
 
-@onready var prompt: Label = $Prompt
+@onready var prompt: Label = $MarginContainer/Prompt
 
 var interactables: Array[Interactable] = []
 var current_interactable: Interactable = null
 
 func _physics_process(_delta):
+	interactables = interactables.filter(
+		func(interactable): return interactable.enabled
+	)
+	
 	current_interactable = interactables[0] if interactables.size() > 0 else null
 	
 	if current_interactable:
@@ -24,3 +28,4 @@ func _on_body_entered(body: Node3D) -> void:
 func _on_body_exited(body: Node3D) -> void:
 	if body is Interactable:
 		interactables.erase(body)
+		

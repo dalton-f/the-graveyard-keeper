@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GridMapReplacementRule" format=3 uid="uid://b2gpcfw6pdsqw"]
+
+[ext_resource type="PackedScene" uid="uid://byqhwlh4v0m6i" path="res://src/gameplay/interactables/grave_a/grave_a.tscn" id="1_pr70c"]
+[ext_resource type="Script" uid="uid://d038h1g71kaue" path="res://src/levels/gridmap_replacement_rule.gd" id="1_rtjaq"]
+
+[resource]
+script = ExtResource("1_rtjaq")
+target_name = "GraveA"
+replacement_scene = ExtResource("1_pr70c")
+metadata/_custom_type_script = "uid://d038h1g71kaue"

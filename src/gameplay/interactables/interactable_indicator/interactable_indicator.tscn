@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bib10b88ritn"]
+
+[ext_resource type="Shader" uid="uid://blypheajeq8rl" path="res://src/shaders/interactable_indicator_outline.gdshader" id="1_u424a"]
+[ext_resource type="Texture2D" uid="uid://o7bojedt85ky" path="res://assets/sprites/indicator.res" id="2_nxmmu"]
+[ext_resource type="Script" uid="uid://c5k47uugownwg" path="res://src/gameplay/interactables/interactable_indicator/interactable_indicator.gd" id="3_nxmmu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_abxb7"]
+render_priority = 0
+shader = ExtResource("1_u424a")
+shader_parameter/sprite_texture = ExtResource("2_nxmmu")
+shader_parameter/enable_billboard = true
+shader_parameter/enable_outline = true
+shader_parameter/simple_outline_color = Color(0.64215463, 0, 0.13777857, 1)
+shader_parameter/simple_outline_width = 1.0
+
+[node name="Sprite3D" type="Sprite3D" unique_id=1109149537]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_abxb7")
+billboard = 1
+texture = ExtResource("2_nxmmu")
+script = ExtResource("3_nxmmu")

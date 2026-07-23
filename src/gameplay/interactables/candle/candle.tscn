@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://d0fdltjfajjkv"]
 
 [ext_resource type="Material" uid="uid://vgcnpcf6gc2d" path="res://assets/materials/halloween_bits/halloween_bits.tres" id="1_cnb0e"]
+[ext_resource type="Script" uid="uid://v3tp21loiegy" path="res://src/gameplay/interactables/candle/candle.gd" id="1_fgplq"]
+[ext_resource type="PackedScene" uid="uid://bib10b88ritn" path="res://src/gameplay/interactables/interactable_indicator/interactable_indicator.tscn" id="3_0vs4r"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wxhei"]
 _surfaces = [{
@@ -85,6 +87,8 @@ height = 0.9680481
 radius = 0.18115234
 
 [node name="Candle" type="StaticBody3D" unique_id=2086201742]
+script = ExtResource("1_fgplq")
+prompt_message = "Replace candle"
 
 [node name="CandleMelted" type="MeshInstance3D" parent="." unique_id=2067132467]
 visible = false
@@ -106,3 +110,9 @@ mesh = SubResource("SphereMesh_ck6d0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1174646914]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5112457, 0)
 shape = SubResource("CylinderShape3D_o1r8f")
+
+[node name="Sprite3D" parent="." unique_id=1109149537 instance=ExtResource("3_0vs4r")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.5, 0)
+visible = false
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]

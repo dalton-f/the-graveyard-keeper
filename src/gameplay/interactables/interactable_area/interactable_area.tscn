@@ -4,7 +4,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ck6d0"]
 height = 0.64953905
-radius = 2.3
+radius = 2.5
 
 [node name="InteractableArea" type="Area3D" unique_id=1155994284]
 script = ExtResource("1_wfpag")
@@ -14,14 +14,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08037892, 0)
 shape = SubResource("CylinderShape3D_ck6d0")
 debug_color = Color(1, 0, 0, 1)
 
-[node name="Prompt" type="Label" parent="." unique_id=1307827059]
-anchors_preset = 10
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=375452897]
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 45.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="Prompt" type="Label" parent="MarginContainer" unique_id=1307827059]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "[KEY]"
 horizontal_alignment = 1
 
