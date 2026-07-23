@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://vgcnpcf6gc2d" path="res://assets/materials/halloween_bits/halloween_bits.tres" id="1_cnb0e"]
 [ext_resource type="Script" uid="uid://v3tp21loiegy" path="res://src/gameplay/interactables/candle/candle.gd" id="1_fgplq"]
+[ext_resource type="AudioStream" uid="uid://bf8th65u6pe1v" path="res://assets/audio/sfx/candle_replace.ogg" id="2_ibi16"]
 [ext_resource type="PackedScene" uid="uid://bib10b88ritn" path="res://src/gameplay/interactables/interactable_indicator/interactable_indicator.tscn" id="3_0vs4r"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wxhei"]
@@ -88,6 +89,7 @@ radius = 0.18115234
 
 [node name="Candle" type="StaticBody3D" unique_id=2086201742]
 script = ExtResource("1_fgplq")
+replace_candle_audio = ExtResource("2_ibi16")
 prompt_message = "Replace candle"
 
 [node name="CandleMelted" type="MeshInstance3D" parent="." unique_id=2067132467]

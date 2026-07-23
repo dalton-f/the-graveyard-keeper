@@ -4,6 +4,8 @@ extends Interactable
 @onready var fence: MeshInstance3D = $Fence
 @onready var sprite_3d: Sprite3D = $Sprite3D
 
+@export var repair_fence_audio: AudioStream
+
 func _ready():
 	enabled = false
 	
@@ -20,4 +22,7 @@ func _on_interacted(_body: Variant) -> void:
 	
 	fence.visible = true
 	fence_broken.visible = false
+	
 	sprite_3d.visible = false
+	
+	AudioManager.play_sfx(repair_fence_audio)

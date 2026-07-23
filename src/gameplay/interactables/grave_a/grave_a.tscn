@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crcx1v31y6f7h" path="res://src/gameplay/interactables/grave_a/grave_a.gd" id="1_ogm73"]
 [ext_resource type="Material" uid="uid://vgcnpcf6gc2d" path="res://assets/materials/halloween_bits/halloween_bits.tres" id="1_oyxvj"]
+[ext_resource type="AudioStream" uid="uid://c3vlip5nnhm35" path="res://assets/audio/sfx/gravestone_repair.ogg" id="2_wx0qj"]
 [ext_resource type="PackedScene" uid="uid://bib10b88ritn" path="res://src/gameplay/interactables/interactable_indicator/interactable_indicator.tscn" id="3_omdi3"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jjqeu"]
@@ -77,6 +78,7 @@ size = Vector3(2.0178528, 2.1825562, 1)
 
 [node name="GraveA" type="StaticBody3D" unique_id=1449162353]
 script = ExtResource("1_ogm73")
+repair_grave_audio = ExtResource("2_wx0qj")
 prompt_message = "Fix gravestone"
 
 [node name="GraveADestroyed" type="MeshInstance3D" parent="." unique_id=2042388598]

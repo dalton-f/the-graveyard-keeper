@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0hwulyaos6ww" path="res://src/gameplay/interactables/fence/fence.gd" id="1_jkpx5"]
 [ext_resource type="Material" uid="uid://vgcnpcf6gc2d" path="res://assets/materials/halloween_bits/halloween_bits.tres" id="1_kxadm"]
+[ext_resource type="AudioStream" uid="uid://rrevnqj7vxmy" path="res://assets/audio/sfx/fence_repair.ogg" id="2_jlf4d"]
 [ext_resource type="PackedScene" uid="uid://bib10b88ritn" path="res://src/gameplay/interactables/interactable_indicator/interactable_indicator.tscn" id="3_hj6ln"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xvsld"]
@@ -75,6 +76,7 @@ size = Vector3(4.0529785, 2.2066727, 0.54248047)
 
 [node name="Fence" type="StaticBody3D" unique_id=31060452]
 script = ExtResource("1_jkpx5")
+repair_fence_audio = ExtResource("2_jlf4d")
 prompt_message = "Repair fence"
 
 [node name="FenceBroken" type="MeshInstance3D" parent="." unique_id=1292712341]

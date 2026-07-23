@@ -38,7 +38,7 @@ void fragment() {
 		
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
-                if (x == 0 && y == 0) continue; // 跳过中心点
+                if (x == 0 && y == 0) continue;
                 vec2 offset = vec2(float(x), float(y)) * pixel_size;
                 float sample_alpha = texture(sprite_texture, UV + offset).a;
                 max_alpha = max(max_alpha, sample_alpha);
@@ -47,7 +47,7 @@ void fragment() {
 		
         if (col.a < 0.99 && max_alpha > 0.01) {
             ALBEDO = simple_outline_color.rgb;
-            ALPHA = simple_outline_color.a; // 仅描边闪烁
+            ALPHA = simple_outline_color.a;
         } else {
             ALPHA = 0.0;
         }

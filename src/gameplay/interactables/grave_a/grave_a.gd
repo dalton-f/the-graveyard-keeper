@@ -4,6 +4,8 @@ extends Interactable
 @onready var grave_a: MeshInstance3D = $GraveA
 @onready var sprite_3d: Sprite3D = $Sprite3D
 
+@export var repair_grave_audio: AudioStream
+
 func _ready():
 	enabled = false
 	
@@ -21,3 +23,5 @@ func _on_interacted(_body: Variant) -> void:
 	grave_a.visible = true
 	grave_a_destroyed.visible = false
 	sprite_3d.visible = false
+	
+	AudioManager.play_sfx(repair_grave_audio)

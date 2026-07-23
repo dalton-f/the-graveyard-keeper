@@ -4,6 +4,8 @@ extends Interactable
 @onready var candle: MeshInstance3D = $Candle
 @onready var sprite_3d: Sprite3D = $Sprite3D
 
+@export var replace_candle_audio: AudioStream
+
 func _ready():
 	enabled = false
 	
@@ -21,3 +23,5 @@ func _on_interacted(_body: Variant) -> void:
 	candle.visible = true
 	candle_melted.visible = false
 	sprite_3d.visible = false
+	
+	AudioManager.play_sfx(replace_candle_audio)
