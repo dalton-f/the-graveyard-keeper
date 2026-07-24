@@ -3,6 +3,7 @@ extends Interactable
 @onready var fence_broken: MeshInstance3D = $FenceBroken
 @onready var fence: MeshInstance3D = $Fence
 @onready var sprite_3d: Sprite3D = $Sprite3D
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
 @export var repair_fence_audio: AudioStream
 
@@ -17,7 +18,9 @@ func _ready():
 		
 		enabled = true
 
-func _on_interacted(_body: Variant) -> void:
+func _on_interacted(_body: Variant) -> void:	
+	gpu_particles_3d.emitting = true
+	
 	enabled = false
 	
 	fence.visible = true

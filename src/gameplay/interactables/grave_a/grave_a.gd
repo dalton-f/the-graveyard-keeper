@@ -3,6 +3,7 @@ extends Interactable
 @onready var grave_a_destroyed: MeshInstance3D = $GraveADestroyed
 @onready var grave_a: MeshInstance3D = $GraveA
 @onready var sprite_3d: Sprite3D = $Sprite3D
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
 @export var repair_grave_audio: AudioStream
 
@@ -18,6 +19,8 @@ func _ready():
 		enabled = true
 
 func _on_interacted(_body: Variant) -> void:
+	gpu_particles_3d.emitting = true
+		
 	enabled = false
 	
 	grave_a.visible = true

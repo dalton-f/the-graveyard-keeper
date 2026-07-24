@@ -13,7 +13,7 @@ config_version=5
 config/name="the-graveyard-keeper"
 run/main_scene="uid://cdcgmu66t7ri"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dl5btlnfejvt6"
 
 [autoload]
 
@@ -24,8 +24,6 @@ AudioManager="*uid://cpst73auqka0x"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 

@@ -3,6 +3,7 @@ extends Interactable
 @onready var candle_melted: MeshInstance3D = $CandleMelted
 @onready var candle: MeshInstance3D = $Candle
 @onready var sprite_3d: Sprite3D = $Sprite3D
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
 @export var replace_candle_audio: AudioStream
 
@@ -18,6 +19,8 @@ func _ready():
 		enabled = true
 
 func _on_interacted(_body: Variant) -> void:
+	gpu_particles_3d.emitting = true
+		
 	enabled = false
 	
 	candle.visible = true

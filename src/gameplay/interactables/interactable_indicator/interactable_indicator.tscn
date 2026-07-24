@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bib10b88ritn"]
 
-[ext_resource type="Shader" uid="uid://blypheajeq8rl" path="res://src/shaders/interactable_indicator_outline.gdshader" id="1_u424a"]
+[ext_resource type="Shader" uid="uid://blypheajeq8rl" path="res://src/shaders/outline.gdshader" id="1_u424a"]
 [ext_resource type="Texture2D" uid="uid://o7bojedt85ky" path="res://assets/sprites/indicator.res" id="2_nxmmu"]
 [ext_resource type="Script" uid="uid://c5k47uugownwg" path="res://src/gameplay/interactables/interactable_indicator/interactable_indicator.gd" id="3_nxmmu"]
 
@@ -16,6 +16,8 @@ shader_parameter/simple_outline_width = 1.0
 [node name="Sprite3D" type="Sprite3D" unique_id=1109149537]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 material_overlay = SubResource("ShaderMaterial_abxb7")
+cast_shadow = 0
 billboard = 1
+double_sided = false
 texture = ExtResource("2_nxmmu")
 script = ExtResource("3_nxmmu")

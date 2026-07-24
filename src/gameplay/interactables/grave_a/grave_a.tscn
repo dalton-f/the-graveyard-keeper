@@ -74,7 +74,31 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vronc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ck6d0"]
-size = Vector3(2.0178528, 2.1825562, 1)
+size = Vector3(1.7418387, 2.1825562, 0.65130615)
+
+[sub_resource type="Curve" id="Curve_wx0qj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.24579127, 0.25663722), -1.1264232, -1.1264232, 0, 0, Vector2(0.57239056, 0.17699122), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_o1r8f"]
+curve = SubResource("Curve_wx0qj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l2j37"]
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_box_extents = Vector3(0.6, 0.5, 0.6)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 15, 0)
+scale_curve = SubResource("CurveTexture_o1r8f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyxat"]
+albedo_color = Color(0.5019608, 0.5372549, 0.6, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbcxx"]
+material = SubResource("StandardMaterial3D_hyxat")
 
 [node name="GraveA" type="StaticBody3D" unique_id=1449162353]
 script = ExtResource("1_ogm73")
@@ -89,11 +113,22 @@ mesh = SubResource("ArrayMesh_p46h8")
 mesh = SubResource("ArrayMesh_txfjx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1170503737]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6293945e-05, 1.0775452, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016295075, 1.0775452, 0.001373291)
 shape = SubResource("BoxShape3D_ck6d0")
 
 [node name="Sprite3D" parent="." unique_id=1109149537 instance=ExtResource("3_omdi3")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 3.5, 0)
 visible = false
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=2025588781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.050636, 0)
+emitting = false
+amount = 50
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_l2j37")
+draw_pass_1 = SubResource("BoxMesh_rbcxx")
 
 [connection signal="interacted" from="." to="." method="_on_interacted"]
